@@ -1,0 +1,51 @@
+<template>
+   <div class="slds-m-around_medium">
+     
+     <div class="slds-m-bottom_small">
+         <lightning-input type="text"
+            value={searchValue}
+            label="Account Name"
+            onchange={searchKeyword}
+            ></lightning-input>
+      </div>
+      
+      <lightning-button label="Search"
+         onclick={handleSearchKeyword}
+         variant="brand"></lightning-button>
+         
+     
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+         <thead>
+            <tr class="slds-line-height_reset">
+               <th class="" scope="col">
+                  <div class="slds-truncate" title="Account Name">Account Name</div>
+               </th>
+               <th class="" scope="col">
+                  <div class="slds-truncate" title="Phone">Phone</div>
+               </th>
+               <th class="" scope="col">
+                  <div class="slds-truncate" title="Site">Account Sitee</div> 
+               </th>
+            </tr>
+         </thead>
+         
+         <tbody>   
+            <template for:each={accountsRecord} for:item="acc">
+               <tr class="slds-hint-parent" key={acc.Id}>
+                  <td>
+                     <div class="slds-truncate">{acc.Name}</div>
+                  </td>
+                  <td>
+                     <div class="slds-truncate">
+                        <lightning-formatted-phone value={acc.Phone} ></lightning-formatted-phone>
+                     </div>
+                  </td>
+                  <td>
+                   <div class="slds-truncate">{acc.Site}</div>
+                </td>
+               </tr>
+            </template>
+         </tbody>
+      </table>
+   </div>
+</template>
